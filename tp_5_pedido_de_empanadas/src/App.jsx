@@ -1,23 +1,18 @@
-import Formulario from './formulario';
-import ListadoCitas from './pedido';
 import { useState } from 'react';
+import Formulario from './formulario';
+import ListadoPedidos from './listadoPedidos';
 
 function App() {
-  const [citas, setCitas] = useState([]);
-
-  const eliminarCita = (indice) => {
-    const nuevasCitas = citas.filter((_, i) => i !== indice);  //nos ayudaron a hacerlo e invesgigamos en google ya que no conociamos como se hacia
-    setCitas(nuevasCitas);
-  };
+  const [pedidos, setPedidos] = useState([]);
 
   return (
-    <>
-      <h1>ADMINISTRADOR DE PACIENTES</h1>
+    <div className="App">
+      <h1>Pedido de Empanadas</h1>
       <div className="container">
-        <Formulario setCitas={setCitas} citas={citas} />
-        <ListadoCitas citas={citas} eliminarCita={eliminarCita} />
+        <Formulario pedidos={pedidos} setPedidos={setPedidos} />
+        <ListadoPedidos pedidos={pedidos} />
       </div>
-    </>
+    </div>
   );
 }
 

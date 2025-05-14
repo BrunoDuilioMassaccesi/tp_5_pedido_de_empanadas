@@ -1,81 +1,77 @@
-import {useState} from 'react';
+import { useState } from 'react';
 
-function formulario({pedidos, setPedidos})
-{
-    const [nombre, setNombre] = useState('');
-    const [sector, setSector] = useState('');
-    const [gustos, setGustos] = useState('');
-    const [cantidad, setCantidad] = useState('');
-    const [gustos2, setGustos2] = useState('');
-    const [cantidad2, setCantida2] = useState('');
 
-    const manejarEnvio = (e) => 
-    {
-        e.preventDefault();
+function Formulario({ pedidos, setPedidos }) {
+  const [nombre, setNombre] = useState('');
+  const [sector, setSector] = useState('');
+  const [empanadas, setEmpanadas] = useState([{ gusto: '', cantidad: '' }]);
 
-        if(nombre == "" || sector == "" || gustos == "" || cantidad == "" || gustos2 == "" || cantidad2 == "")
-        {
-          alert("Todos los campos son obligatorios")
-          return;
-        }
+  const manejarCambioEmpanada = (index, campo, valor) => {
+    const nuevasEmpanadas = [...empanadas];
+    nuevasEmpanadas[index][campo] = valor;
+    setEmpanadas(nuevasEmpanadas);
+  };
+
+  const agregarOtraEmpanada = () => {
+    setEmpanadas([...empanadas, { gusto: '', cantidad: '' }]);
+  };
+
+  const manejarEnvio = (e) => {
+    e.preventDefault();
+
+    if (!nombre || !sector || empanadas.some(e => !e.gusto || !e.cantidad)) {
+      alert("Todos los campos son obligatorios");
+      return;
     }
 
     const nuevoPedido = {
-      Nombre: Nombre,
-      Sector: Sector,
-      Gustos: Gustos,
-      Cantidad: Cantidad,
-      Gustos2: Gustos2,
-      Cantidad2: Cantidad2
+      nombre,
+      sector,
+      empanadas: empanadas.map(e => ({
+        gusto: e.gusto,
+        cantidad: parseInt(e.cantidad)
+      }))
     };
 
-    const copia = pedidos.slice(); 
-    copia.push(nuevoPedido); 
-    setPedidos(copia); 
-
+    setPedidos([...pedidos, nuevoPedido]);
     setNombre('');
     setSector('');
-    setGustos('');
-    setCantidad('');
-    setGustos2('');
-    setCantida2('');
+    setEmpanadas([{ gusto: '', cantidad: '' }]);
+  };
 
+  return (
+    <div className="formulario">
+      <h2>Crear Pedido</h2>
+      <form onSubmit={manejarEnvio}>
+        <label>Nombre</label>
+        <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} />
 
+        <label>Sector</label>
+        <select value={sector} onChange={e => setSector(e.target.value)}>
+          <option value="">Seleccione</option>
+          <option value="Sistemas">Sistemas</option>
+          <option value="Finanzas">Finanzas</option>
+          <option value="Ventas">Ventas</option>
+          <option value="Recursos Humanos">Recursos Humanos</option>
+          <option value="Soporte">Soporte</option>
+          <option value="Depósito">Depósito</option>
+        </select>
 
+        <label>Empanadas</label>
+        {empanadas.map((emp, i) => (
+          <div key={i} className="empanada">
+            <input type="text" placeholder="Gusto" value={emp.gusto}
+              onChange={e => manejarCambioEmpanada(i, 'gusto', e.target.value)} />
+            <input type="number" placeholder="Cantidad" value={emp.cantidad}
+              onChange={e => manejarCambioEmpanada(i, 'cantidad', e.target.value)} />
+          </div>
+        ))}
 
-    return (
-      <div className="one-half column">
-        <h2>Crear mi pedido</h2>
-        <form onSubmit={manejarEnvio}>
-          <label>Nombre</label>
-          <input
-            type="text"
-            className="u-full-width"
-            placeholder="Nombre"
-            value={nombre}
-            onChange={(e) => setnombre(e.target.value)}
-          />
-          <label>Sector de la empresa</label>
-          <input
-            type="text"
-            className="u-full-width"
-            placeholder="Sector de la empresa"
-            value={sector}
-            onChange={(e) => setSector(e.target.value)}
-          />
-          <label>gustos</label>
-          <input
-            type="text"
-            className="u-full-width"
-            value={gustos}
-            onChange={(e) => setGustos(e.target.value)}
-          />
-          <button type="submit" className="u-full-width button-primary">
-            Agregar pedido
-          </button>
-        </form>
-      </div>
-    );
-  }
+        <button type="button" onClick={agregarOtraEmpanada}>Agregar otra empanada</button>
+        <button type="submit">Enviar pedido</button>
+      </form>
+    </div>
+  );
+}
 
-  export default formulario;
+export default Formulario;

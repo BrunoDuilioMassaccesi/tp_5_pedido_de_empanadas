@@ -1,20 +1,16 @@
-function Pedidos({ datos, eliminarPedido, indice }) {
-    return (
-      <div className="pedido">
-        <p>Nombre: <span>{datos.Nombre}</span></p>
-        <p>Sector: <span>{datos.Sector}</span></p>
-        <p>Gustos: <span>{datos.Gustos}</span></p>
-        <p>Cantidad: <span>{datos.Cantidad}</span></p>
-        <p>Gustos2: <span>{datos.Gustos2}</span></p>
-        <p>Cantidad2: <span>{datos.Cantidad2}</span></p>
-        <button
-          className="button eliminar u-full-width"
-          onClick={() => eliminarCita(indice)}
-        >
-          Eliminar ×
-        </button>
-      </div>
-    );
-  }
-  
-  export default Pedidos;
+function Pedido({ datos }) {
+  return (
+    <div className="pedido">
+      <p><strong>Nombre:</strong> {datos.nombre}</p>
+      <p><strong>Sector:</strong> {datos.sector}</p>
+      <p><strong>Empanadas:</strong></p>
+      <ul>
+        {datos.empanadas.map((emp, index) => (
+          <li key={index}>{emp.cantidad} de {emp.gusto}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default Pedido;
