@@ -27,14 +27,6 @@
   gap: 10px;
 }
 
-.listados {
-  flex: 1;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 1%;
-}
 
 .resumen-gustos ul {
   list-style: none;
@@ -65,7 +57,7 @@
 }
 .btnAgregar
 {
-  background-color: #4f46e5; /* Azul violeta */
+  background-color: #4f46e5;
   color: #fff;
   padding: 10px;
   border: none;
@@ -79,7 +71,7 @@
   margin-right: 30%;
 }
 .btnAgregar:hover{
-  background-color: #4338ca; /* Más oscuro al hacer hover */
+  background-color: #4338ca;
   transform: translateY(-2px);
 }
 .btnAgregar:active
@@ -88,4 +80,46 @@
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
 }
+
+.listados {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  flex: 1;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1%;
+}
+
+.resumen-gustos, .lista-personas {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.resumen-gustos h2, .lista-personas h2 {
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.resumen-gustos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resumen-gustos li {
+  padding: 6px 0;
+  border-bottom: 1px solid #e0e0e0;
+  color: #555;
+}
+
+
 
