@@ -1,107 +1,91 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-/* Estilos generales de la app */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f0f2f5;
-  color: #333;
-}
-
-.App {
-  text-align: center;
+.formulario {
+  background-color: #ffffff;
   padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-h1 {
-  color: #d35400;
-  margin-bottom: 30px;
+.formulario h2 {
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-.container {
+.empanada {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.listados {
+  flex: 1;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 1%;
+}
+
+.resumen-gustos ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.lista-personas {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  padding: 0 30px;
+  align-items: center;
+  margin-bottom: 20px;
 }
-
-/* Reutilizable */
-button {
-  background-color: #d35400;
-  color: white;
+.titulo
+{
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+  margin-left: 35%;
+  margin-right: 35%;
+  border:1px solid black;
+  border-radius: 5px;
+}
+.btnAgregar
+{
+  background-color: #4f46e5; /* Azul violeta */
+  color: #fff;
+  padding: 10px;
   border: none;
-  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 30%;
+  margin-right: 30%;
 }
-
-button:hover {
-  background-color: #e67e22;
+.btnAgregar:hover{
+  background-color: #4338ca; /* Más oscuro al hacer hover */
+  transform: translateY(-2px);
 }
+.btnAgregar:active
+{
+  transform: translateY(0);
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-input[type="text"],
-input[type="number"],
-select {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px;
-  font-size: 14px;
-}
-
-/* Responsive */
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    padding: 0 10px;
-  }
-
-  .formulario,
-  .listados {
-    width: 100%;
-  }
 }
 

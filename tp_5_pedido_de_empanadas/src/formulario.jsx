@@ -67,8 +67,8 @@ function Formulario({ pedidos, setPedidos }) {
           </div>
         ))}
 
-        <button type="button" onClick={agregarOtraEmpanada}>Agregar otra empanada</button>
-        <button type="submit">Enviar pedido</button>
+        <button class="btnAgregar" type="submit" onClick={agregarOtraEmpanada}>Agregar otra empanada</button>
+        <button class="btnAgregar" type="submit">Enviar pedido</button>
       </form>
     </div>
   );
